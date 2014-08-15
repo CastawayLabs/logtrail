@@ -1,0 +1,10 @@
+//
+// JSHint Options
+
+{
+
+  "node": true,
+  "indent": 2,
+  "maxlen": 80
+
+}

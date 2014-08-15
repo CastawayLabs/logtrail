@@ -1,0 +1,28 @@
+{
+  "name": "logtrail",
+  "version": "0.0.1",
+  "description": "superheroic node.js logging module",
+  "author": "Zia Ur Rehman <zia@brainloggers.com>",
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CastawayLabs/logtrail"
+  },
+  "bugs": {
+    "url": "https://github.com/CastawayLabs/logtrail/issues"
+  },
+  "keywords": [
+    "logtrail",
+    "logger",
+    "console.log"
+  ],
+  "dependencies": {
+    "colors": "~0.6.2",
+    "moment": "~2.8.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.21.4"
+  },
+  "main": "logtrail.js",
+  "license": "MIT"
+}
