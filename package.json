@@ -11,6 +11,9 @@
   "bugs": {
     "url": "https://github.com/CastawayLabs/logtrail/issues"
   },
+  "scripts": {
+    "test": "mocha test"
+  },
   "keywords": [
     "logtrail",
     "logger",
