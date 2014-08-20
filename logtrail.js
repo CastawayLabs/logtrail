@@ -71,6 +71,15 @@ function Logtrail (config) {
     'ERROR':  [this._stderr],
     'FATAL':  [this._stderr]
   };
+
+  Object.keys(this._logTypes).map(function (id) {
+    var logtype = this._logTypes[id];
+    this[logtype] = function () {
+      args = Array.prototype.slice.call(arguments);
+      args.unshift(logtype);
+      this._logger.apply(this, args);
+    };
+  }, this);
 }
 
 Logtrail.prototype._isLogType = function (logtype) {
@@ -112,7 +121,7 @@ Logtrail.prototype._getLogStreams = function (logtype) {
   if (logTypeID) {
     return this._logStreams[logTypeID];
   }
-  return this._stdout;
+  return [this._stdout];
 };
 
 Logtrail.prototype._logger = function (type) {
@@ -124,7 +133,7 @@ Logtrail.prototype._logger = function (type) {
         Array.prototype.slice.call(arguments, 1)
       ))[this._getLogColor(type)];
   } else {
-    matter = util.format.apply(arguments);
+    matter = util.format.apply(this, arguments);
   }
 
   if (this._confs.timestamps.enabled) {
@@ -135,3 +144,5 @@ Logtrail.prototype._logger = function (type) {
     stream.write(now + ' ' + matter + '\n');
   });
 };
+
+module.exports = Logtrail;
