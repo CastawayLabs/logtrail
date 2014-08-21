@@ -2,7 +2,8 @@
  *
  */
 
-var util = require('util'),
+var fs = require('fs'),
+    util = require('util'),
     colors = require('colors'),
     moment = require('moment'),
     extend = require('./lib/extend.js');
@@ -16,7 +17,12 @@ function Logtrail (config) {
       break;
 
     case 'string':
-      this._confs = extend(require('./config/default.json'), require(config));
+      this._confs = extend(
+        true,
+        {},
+        require('./config/default.json'),
+        JSON.parse(fs.readFileSync(config, 'utf-8'))
+      );
       break;
 
     case 'object':
@@ -26,7 +32,9 @@ function Logtrail (config) {
         err.code = 'LOGTRAIL_BADARG';
         throw err;
       }
-      this._confs = extend(require('./config/default.json'), config);
+      this._confs = extend(
+        true, {}, require('./config/default.json'), config
+      );
       break;
 
     default:
@@ -80,6 +88,10 @@ function Logtrail (config) {
       this._logger.apply(this, args);
     };
   }, this);
+
+  this.log = function () {
+    this._logger.apply(this, args);
+  };
 }
 
 Logtrail.prototype._isLogType = function (logtype) {
@@ -136,7 +148,7 @@ Logtrail.prototype._logger = function (type) {
     matter = util.format.apply(this, arguments);
   }
 
-  if (this._confs.timestamps.enabled) {
+  if (this._confs.timestamps && this._confs.timestamps.enabled) {
     now = moment().format(this._confs.timestamps.format).grey;
   }
 
