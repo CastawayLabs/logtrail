@@ -20,6 +20,7 @@
     "console.log"
   ],
   "dependencies": {
+    "callsite": "^1.0.0",
     "colors": "~0.6.2",
     "moment": "~2.8.1"
   },
