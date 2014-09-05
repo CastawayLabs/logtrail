@@ -1,7 +1,0 @@
-{
-  "timestamps": {
-    "enabled": true,
-    "format": "YYYY-MM-DD HH:mm:ss"
-  },
-  "stacktrace": true
-}
