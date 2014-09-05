@@ -1,1 +1,1 @@
-module.exports = new (require('./lib/logtrail'));
+module.exports = new (require('./lib/logtrail'))();
