@@ -1,9 +1,23 @@
 /*
- * This doesn't work yet!
+ * Example!
  */
+
 var logtrail = require('../');
 
-// logtrail.log('hello world');
-// logtrail.error('hello world');
-// logtrail.warn('hello world');
-// logtrail.info('hello world');
+logtrail.configure({
+	timestamp: true,
+	stacktrace: true,
+	loglevel: 'trace',
+	basedir: require('path').join(__dirname, '..')
+});
+
+function helloworld () {
+	logtrail.log('~', 'log');
+	logtrail.trace('~', 'trace');
+	logtrail.info('~', 'info');
+	logtrail.warn('~', 'warn');
+	logtrail.error('~', 'error');
+	logtrail.fatal('~', 'fatal');
+}
+
+helloworld()

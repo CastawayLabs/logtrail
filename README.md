@@ -18,3 +18,24 @@ objectives for logtrail include:
 - *add capability:* set loglevel without reconfiguring
 - *add capability:* extend log types
 - *write test:* logtrail core
+
+## Usage
+
+```javascript
+var logtrail = require('logtrail');
+
+logtrail.configure({
+	timestamp: true,
+	stacktrace: true,
+	loglevel: 'info'
+}
+});
+
+// loglevels:
+// fatal
+// error
+// warn
+// info
+// trace
+
+```
