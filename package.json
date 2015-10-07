@@ -1,6 +1,6 @@
 {
   "name": "logtrail",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "superheroic node.js logging module",
   "author": "Zia Ur Rehman <zia@brainloggers.com>",
   "contributors": [],
