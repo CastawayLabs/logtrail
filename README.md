@@ -28,7 +28,6 @@ logtrail.configure({
 	timestamp: true,
 	stacktrace: true,
 	loglevel: 'info'
-}
 });
 
 // loglevels:
